@@ -3,7 +3,6 @@ package com.fastian.fastchat;
 public class Message {
     private String messageId, message, senderId, imageUrl;
     private long timestamp;
-    private int feeling = -1;
 
     public Message() {
     }
@@ -45,15 +44,6 @@ public class Message {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
-
-    public int getFeeling() {
-        return feeling;
-    }
-
-    public void setFeeling(int feeling) {
-        this.feeling = feeling;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }

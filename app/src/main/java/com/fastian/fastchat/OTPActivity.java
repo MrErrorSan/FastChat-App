@@ -2,12 +2,10 @@ package com.fastian.fastchat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import com.fastian.fastchat.databinding.ActivityOTPBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,7 +26,6 @@ public class OTPActivity extends AppCompatActivity {
     FirebaseAuth auth;
     String verificationId;
     String Email;
-
     ProgressDialog dialog;
 
     @Override
@@ -55,15 +52,9 @@ public class OTPActivity extends AppCompatActivity {
                 .setActivity(OTPActivity.this)
                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     @Override
-                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-
-                    }
-
+                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {}
                     @Override
-                    public void onVerificationFailed(@NonNull FirebaseException e) {
-
-                    }
-
+                    public void onVerificationFailed(@NonNull FirebaseException e) {}
                     @Override
                     public void onCodeSent(@NonNull String verifyId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(verifyId, forceResendingToken);
@@ -75,29 +66,21 @@ public class OTPActivity extends AppCompatActivity {
 
         binding.otpView.setOtpListener(new OTPListener() {
             @Override
-            public void onInteractionListener() {
-
-            }
-
+            public void onInteractionListener() {}
             @Override
             public void onOTPComplete(String otp) {
                 PhoneAuthCredential credentials = PhoneAuthProvider.getCredential(verificationId, otp);
-
-                auth.signInWithCredential(credentials).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(OTPActivity.this, "Logged In.", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(OTPActivity.this, SetupProfileActivity.class);
-                            intent.putExtra("email",Email);
-                            startActivity(intent);
-                            finishAffinity();
-                        } else {
-                            Toast.makeText(OTPActivity.this, "Failed.", Toast.LENGTH_SHORT).show();
-                        }
+                auth.signInWithCredential(credentials).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(OTPActivity.this, "Logged In.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(OTPActivity.this, SetupProfileActivity.class);
+                        intent.putExtra("email",Email);
+                        startActivity(intent);
+                        finishAffinity();
+                    } else {
+                        Toast.makeText(OTPActivity.this, "Failed.", Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         });
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".Activities.ChatActivity">
+    tools:context=".ChatActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -50,19 +50,11 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mian Asad Ali"
+                    android:text="Name"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/status"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Online"
-                    android:textColor="@color/white"
-                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>
@@ -90,9 +82,9 @@
 
             <EditText
                 android:id="@+id/messageBox"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
                 android:hint="Type a message..."
@@ -103,23 +95,8 @@
                 android:textColorHint="@color/blue"
                 android:textColorLink="#673AB7"
                 android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/attachment"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginRight="12dp"
-                app:srcCompat="@drawable/ic_attachment"
-                app:tint="@color/blue" />
-
-            <ImageView
-                android:id="@+id/camera"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_marginRight="12dp"
-                app:srcCompat="@drawable/ic_camera"
-                app:tint="@color/blue" />
+                android:textStyle="bold"
+                android:autofillHints="" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -132,7 +109,8 @@
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:listitem="@layout/item_receive" />
 
     <ImageView
         android:id="@+id/sendBtn"
@@ -145,5 +123,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cardView"
         app:srcCompat="@drawable/ic_send"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:contentDescription="TODO" />
 </androidx.constraintlayout.widget.ConstraintLayout>

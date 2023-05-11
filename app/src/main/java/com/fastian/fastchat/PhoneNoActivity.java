@@ -28,28 +28,41 @@ public class PhoneNoActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
         Objects.requireNonNull(getSupportActionBar()).hide();
         binding.emailBox.requestFocus();
         binding.continueBtn.setOnClickListener(v -> {
 
             String email=binding.emailBox.getText().toString();
             String phone=binding.phoneBox.getText().toString();
-            if(email.isEmpty())
+            if(check(phone, email))
             {
-                binding.emailBox.setError("Please type Email");
-                return;
+                Intent intent = new Intent(PhoneNoActivity.this,OTPActivity.class);
+                intent.putExtra("phoneNumber",phone);
+                intent.putExtra("email",email);
+                startActivity(intent);
             }
-            if(phone.isEmpty())
-            {
-                binding.phoneBox.setError("Please type phoneNo.");
-                return;
-            }
-            Intent intent = new Intent(PhoneNoActivity.this,OTPActivity.class);
-            intent.putExtra("phoneNumber",binding.phoneBox.getText().toString());
-            intent.putExtra("email",binding.emailBox.getText().toString());
-
-            startActivity(intent);
         });
+    }
+    boolean check (String phone, String email){
+        int count =0;
+        if(email.isEmpty())
+        {
+            binding.emailBox.setError("Please type Email");
+            count++;
+        }else if (!(email.contains("@") || email.contains(".")))
+        {
+            binding.emailBox.setError("Please type Correct Email");
+            count++;
+        }
+        if(phone.isEmpty())
+        {
+            binding.phoneBox.setError("Please type Phone No.");
+            count++;
+        }else if (!phone.contains("+"))
+        {
+            binding.phoneBox.setError("Please type Correct Phone No.");
+            count++;
+        }
+        return count == 0;
     }
 }
