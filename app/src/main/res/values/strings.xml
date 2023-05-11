@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">FastChat</string>
+    <string name="enter_your_phone_number_and_email">Enter Your Phone Number and Email</string>
+    <string name="otp_will_be_send_on_your_phone_number">OTP will be send on your phone number</string>
+    <string name="todo">TODO</string>
+    <string name="type_your_email">Type your Email</string>
+    <string name="type_your_phone_number">Type your phone number</string>
+    <string name="fast_logo">Fast Logo</string>
+    <string name="enter_the_otp_to_verify_your_phone_number">Enter the OTP to verify your Phone Number</string>
+    <string name="verify_923001234567">Verify +923001234567</string>
+    <string name="enter_otp_here">Enter OTP here</string>
+    <string name="type_your_name_here">Type your Name here</string>
+    <string name="please_set_your_profile_picture_and_name">Please Set your Profile Picture and Name</string>
+</resources>
